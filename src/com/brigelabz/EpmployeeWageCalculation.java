@@ -10,26 +10,25 @@ public class EpmployeeWageCalculation {
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to employee wage");
-		
+
 		int employeeCheck = (int) Math.floor(Math.random() * 10) % 3;
-		
+
 		System.out.println(employeeCheck);
-		
+
 		int dailyWage = 0;
-		
-		if (employeeCheck == 1) {
+
+		switch (employeeCheck) {
+		case IS_PART_TIME:
 			dailyWage = PART_TIME_HOUR * WAGE_PER_HOUR;
 			System.out.println("Employee is part time ");
-		} 
-		else if (employeeCheck == 2) {
+			break;
+		case IS_FULL_TIME:
 			dailyWage = FULL_DAY_HOUR * WAGE_PER_HOUR;
 			System.out.println("Employee is full time ");
-		}
-		else {
-
+			break;
+		default:
 			System.out.println("Employee is Absent");
 		}
-		
 		System.out.println("Employee daily wage is " + dailyWage);
 	}
 }
