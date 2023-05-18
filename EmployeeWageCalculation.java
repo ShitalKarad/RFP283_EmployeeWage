@@ -4,60 +4,44 @@ import java.util.Scanner;
 
 public class EmployeeWageCalculation {
 	
-	public static void main(String[] args) {
+	 static final int WAGE_PER_HOUR = 20;
+     static final int FULL_DAY_HOUR = 8;
+     static final int PART_TIME_HOUR = 4;
+     static final int IS_FULL_TIME = 2;
+     static final int IS_PART_TIME = 1;
+     static final int WORKING_DAYS_PER_MONTH = 20;
 
-        System.out.println("Welcome to employee wage");
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter your count of company's");
-        int company = sc.nextInt();
+     public static void main(String[] args) {
+         System.out.println("Welcome to employee wage");
+         int totalWage = 0;
+         int dailyWage = 0;
+         int dayCount = 1;
+         while (dayCount <=WORKING_DAYS_PER_MONTH  ) {
+             int employeeCheck = (int) Math.floor(Math.random() * 10) % 3;
+             System.out.println(employeeCheck);
 
-        for ( int i = 1 ; i<=company ; i++ ){
-            System.out.println("Enter wage per hour ");
-            int wagePerHour = sc.nextInt();
-            System.out.println("Enter workingHoursPerMonth ");
-            int workingHoursPerMonth = sc.nextInt();
-            System.out.println("Enter workingDaysPerMonth ");
-            int workingDaysPerMonth = sc .nextInt();
-            wageCalculation(workingDaysPerMonth, workingDaysPerMonth, workingDaysPerMonth);
-        }
+             switch (employeeCheck) {
+                 case IS_PART_TIME:
+                     dailyWage = PART_TIME_HOUR * WAGE_PER_HOUR;
+                     System.out.println("Employee is part time " +dailyWage);
+                     break;
+                 case IS_FULL_TIME:
+                     dailyWage = FULL_DAY_HOUR * WAGE_PER_HOUR;
+                     System.out.println("Employee is full time " +dailyWage);
+                     break;
+                 default:
+                     System.out.println("Employee is Absent");
+                     break;
+             }
+             totalWage= totalWage + dailyWage;
+                 dayCount++;
+         }
+         System.out.println(" daily wage for day "+dayCount+" =>" + dailyWage);
+         System.out.println(" daily wage for month "+dayCount+" =>" + totalWage);
 
-    }
-    public static void wageCalculation( int wagePerHour ,int workingHoursPerMonth,int workingDaysPerMonth ){
-        
-       
-        int fullDayHour = 8;
-        int partTimeHour = 4;
-        int isFullTime = 2;
-        int isPartTime = 1;
-        int totalWage = 0;
-        int dayCount = 1;
-        int workingHours = 0;
-        while (dayCount <workingDaysPerMonth && workingHours < workingHoursPerMonth ) {
-            int employeeCheck = (int) Math.floor(Math.random() * 10) % 3;
-            System.out.println(employeeCheck);
-            int dailyWage = 0;
-            switch (employeeCheck) {
-                case 1:
-                    dailyWage = partTimeHour * wagePerHour;
-                    workingHours += partTimeHour;
-                    System.out.println("Employee is part time " +dailyWage);
-                    break;
-                case 2:
-                    dailyWage = fullDayHour * wagePerHour;
-                    workingHours +=fullDayHour;
-                    System.out.println("Employee is full time " +dailyWage);
-                    break;
-                default:
-                    System.out.println("Employee is Absent");
-                    break;
-            }
-            dayCount++;
-            totalWage = totalWage +dailyWage;
-        }
-        System.out.println("Total hours "+ workingHours);
-        System.out.println(" totalWage wage for month "+ totalWage);
 
-    }
+     }
+
 }
 
 
